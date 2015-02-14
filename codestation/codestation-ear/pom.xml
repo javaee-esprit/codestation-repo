@@ -44,6 +44,14 @@
   				<username>root</username>
   				<password>root</password>
   			</configuration>
+  			<executions>
+  				<execution>
+  					<phase>install</phase>
+  					<goals>
+  						<goal>deploy</goal>
+  					</goals>
+  				</execution>
+  			</executions>
   		</plugin>
   	</plugins>
   </build>
