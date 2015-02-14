@@ -18,37 +18,31 @@ import org.ug.cs.services.interfaces.UserServiceRemote;
 @Remote(UserServiceRemote.class)
 @Local(UserServiceLocal.class)
 public class UserService implements UserServiceRemote, UserServiceLocal {
-	
+
 	@PersistenceContext
 	private EntityManager em;
 
-    public UserService() {
-    }
+	public UserService() {
+	}
 
-    @TransactionAttribute(TransactionAttributeType.NEVER)
-    public Boolean isLoginInUse(String login) {
-    	return em
-    			.createNamedQuery("isLoginInUse", Boolean.class)
-    			.setParameter("x", login)
-    			.getSingleResult();
-    }
-    
-    @TransactionAttribute(TransactionAttributeType.NEVER)
-    public List<User> findAllUsers() {
-    	return em
-    			.createQuery("from User", User.class)
-    			.getResultList();
-    }
-    
+	@TransactionAttribute(TransactionAttributeType.NEVER)
+	public Boolean isLoginInUse(String login) {
+		return em.createNamedQuery("isLoginInUse", Boolean.class)
+				.setParameter("x", login).getSingleResult();
+	}
+
+	@TransactionAttribute(TransactionAttributeType.NEVER)
+	public List<User> findAllUsers() {
+		return em.createQuery("from User", User.class).getResultList();
+	}
+
 	public User create(User user) {
 		User persistent = null;
-		if(!isLoginInUse(user.getLogin())){
+		if (!isLoginInUse(user.getLogin())) {
 			em.persist(user);
 			persistent = user;
 		}
 		return persistent;
 	}
-
-
 
 }
