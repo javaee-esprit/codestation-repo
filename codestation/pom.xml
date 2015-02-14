@@ -7,6 +7,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>codestation-ejb</module>
+		<module>codestation-web</module>
 	</modules>
 
 	<properties>
@@ -22,9 +23,9 @@
 
 		<version.compiler.plugin>3.1</version.compiler.plugin>
 		<version.ear.plugin>2.10</version.ear.plugin>
+		<version.war.plugin>2.5</version.war.plugin>
 		<version.ejb.plugin>2.4</version.ejb.plugin>
 		<version.surefire.plugin>2.16</version.surefire.plugin>
-		<version.war.plugin>2.5</version.war.plugin>
 
 	</properties>
 
@@ -43,7 +44,6 @@
 				<artifactId>codestation-web</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>
-				<scope>compile</scope>
 			</dependency>
 			
 			<dependency>
