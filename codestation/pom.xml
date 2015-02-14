@@ -20,8 +20,8 @@
 		<version.javaee>7.0</version.javaee>
 
 		<version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
-		<version.jboss.bom>8.1.0.Final</version.jboss.bom>
 		<version.wildfly>8.1.0.Final</version.wildfly>
+		<version.hibernate>4.3.5.Final</version.hibernate>
 
 		<version.compiler.plugin>3.1</version.compiler.plugin>
 		<version.ear.plugin>2.10</version.ear.plugin>
