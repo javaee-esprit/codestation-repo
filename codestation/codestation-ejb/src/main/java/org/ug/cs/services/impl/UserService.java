@@ -58,6 +58,8 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 		User found = null;
 		String jpql = "select u from User u where u.login=:x and u.password=:y";
 		TypedQuery<User> query = em.createQuery(jpql, User.class);
+		query.setParameter("x", login);
+		query.setParameter("y", password);
 		try{
 			found = query.getSingleResult();
 		}catch(NoResultException e){

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.ug.cs.client.locator.ServiceLocator;
 import org.ug.cs.persistence.User;
-import org.ug.cs.services.interfaces.UserServiceLocal;
 import org.ug.cs.services.interfaces.UserServiceRemote;
 
 public class UserServiceDelegate {
@@ -13,8 +12,8 @@ public class UserServiceDelegate {
 	private static final String EJB_MODULE = "codestation-ejb";
 	private static final String SERVICE_NAME = "UserService";
 
-	private static UserServiceLocal getProxy() {
-		return (UserServiceLocal) ServiceLocator.getInstance().getProxy(EAR,
+	private static UserServiceRemote getProxy() {
+		return (UserServiceRemote) ServiceLocator.getInstance().getProxy(EAR,
 				EJB_MODULE, SERVICE_NAME, UserServiceRemote.class);
 	}
 

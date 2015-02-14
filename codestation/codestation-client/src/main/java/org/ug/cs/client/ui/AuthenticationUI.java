@@ -105,6 +105,7 @@ public class AuthenticationUI extends JFrame {
 							}
 						}
 					});
+					dispose();
 				}
 			}
 		});
