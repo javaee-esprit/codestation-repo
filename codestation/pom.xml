@@ -8,6 +8,7 @@
 	<modules>
 		<module>codestation-ejb</module>
 		<module>codestation-web</module>
+		<module>codestation-ear</module>
 	</modules>
 
 	<properties>

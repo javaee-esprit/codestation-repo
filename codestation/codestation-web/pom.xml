@@ -7,4 +7,23 @@
   </parent>
   <artifactId>codestation-web</artifactId>
   <packaging>war</packaging>
+  
+  <properties>
+  	<failOnMissingWebXml>false</failOnMissingWebXml>
+  </properties>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>javax</groupId>
+  		<artifactId>javaee-api</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>unygo</groupId>
+  		<artifactId>codestation-ejb</artifactId>
+  		<type>ejb</type>
+  		<scope>provided</scope>
+  	</dependency>
+  </dependencies>
+  
+  
 </project>
