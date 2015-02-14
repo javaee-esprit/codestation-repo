@@ -1,4 +1,4 @@
-package org.ug.cs.services.conf;
+package org.ug.cs.util;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;

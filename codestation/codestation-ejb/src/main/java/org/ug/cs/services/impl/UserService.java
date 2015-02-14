@@ -1,14 +1,19 @@
 package org.ug.cs.services.impl;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.ug.cs.persistence.User;
 import org.ug.cs.services.interfaces.UserServiceLocal;
@@ -18,6 +23,9 @@ import org.ug.cs.services.interfaces.UserServiceRemote;
 @Remote(UserServiceRemote.class)
 @Local(UserServiceLocal.class)
 public class UserService implements UserServiceRemote, UserServiceLocal {
+	
+	@Inject
+	private Logger logger;
 
 	@PersistenceContext
 	private EntityManager em;
@@ -43,6 +51,19 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 			persistent = user;
 		}
 		return persistent;
+	}
+
+	@TransactionAttribute(TransactionAttributeType.NEVER)
+	public User authenticate(String login, String password) {
+		User found = null;
+		String jpql = "select u from User u where u.login=:x and u.password=:y";
+		TypedQuery<User> query = em.createQuery(jpql, User.class);
+		try{
+			found = query.getSingleResult();
+		}catch(NoResultException e){
+			logger.log(Level.WARNING, "Authentication failure (login='"+login+"', password='"+password+"')");
+		}
+		return found;
 	}
 
 }
