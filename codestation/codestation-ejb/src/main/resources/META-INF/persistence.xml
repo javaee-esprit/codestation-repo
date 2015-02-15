@@ -5,6 +5,7 @@
 	<persistence-unit name="codestation-ejb">
 	<jta-data-source>java:jboss/datasources/CodeStationDS</jta-data-source>
 	<class>org.ug.cs.persistence.User</class>
+	<class>org.ug.cs.persistence.Media</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />

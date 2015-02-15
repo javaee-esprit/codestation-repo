@@ -34,6 +34,7 @@ public class AuthenticationUI extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		UserServiceDelegate.load();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

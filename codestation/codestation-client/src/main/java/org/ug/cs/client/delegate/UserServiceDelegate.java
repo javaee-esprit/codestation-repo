@@ -11,26 +11,29 @@ public class UserServiceDelegate {
 	private static final String EAR = "codestation-ear";
 	private static final String EJB_MODULE = "codestation-ejb";
 	private static final String SERVICE_NAME = "UserService";
+	
+	private static UserServiceRemote proxy = null;
 
-	private static UserServiceRemote getProxy() {
-		return (UserServiceRemote) ServiceLocator.getInstance().getProxy(EAR,
+	
+	public static void load() {
+		proxy =(UserServiceRemote) ServiceLocator.getInstance().getProxy(EAR,
 				EJB_MODULE, SERVICE_NAME, UserServiceRemote.class);
 	}
 
 	public static Boolean isLoginInUse(String login) {
-		return getProxy().isLoginInUse(login);
+		return proxy.isLoginInUse(login);
 	}
 
 	public static User create(User user) {
-		return getProxy().create(user);
+		return proxy.create(user);
 	}
 
 	public static List<User> findAllUsers() {
-		return getProxy().findAllUsers();
+		return proxy.findAllUsers();
 	}
 
 	public static User authenticate(String login, String password) {
-		return getProxy().authenticate(login, password);
+		return proxy.authenticate(login, password);
 	}
 
 }
