@@ -17,6 +17,7 @@ public class MediaServiceDelegate {
 	public static void load() {
 		proxy = (MediaServiceRemote) ServiceLocator.getInstance().getProxy(EAR,
 				EJB_MODULE, SERVICE_NAME, MediaServiceRemote.class);
+		System.out.println("MS");
 	}
 
 	public static void create(Media media) {

@@ -3,6 +3,8 @@ package org.ug.cs.client.ui;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -13,6 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
+
+import com.google.common.collect.ImmutableSet;
+import com.google.common.reflect.ClassPath;
+import com.google.common.reflect.ClassPath.ClassInfo;
 
 public class LoadingProxiesUI extends JFrame {
 
@@ -45,16 +51,31 @@ public class LoadingProxiesUI extends JFrame {
 		setContentPane(contentPane);
 
 		JButton btnNewButton = new JButton("load proxies");
+		final JProgressBar progressBar = new JProgressBar();
+		progressBar.setValue(0);
+		
+		final JLabel progressLabel = new JLabel("loading...");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				try {
+					ClassPath classPath = ClassPath.from(getClass().getClassLoader());
+					
+					ImmutableSet<ClassInfo> topLevelClasses = classPath.getTopLevelClasses("org.ug.cs.client.delegate");
+					int size = topLevelClasses.size();
+					int i = 0;
+					for (ClassInfo classInfo : topLevelClasses) {
+							progressLabel.setText("loading "+ classInfo.getSimpleName()+ " ...");
+							Class<?> clazz = Class.forName(classInfo.getName());
+							clazz.getMethod("load").invoke(null);
+							int percent = (int) (((float)++i/size)*100);
+							progressBar.setValue(percent);
+					}
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 			}
 		});
 
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setValue(10);
-
-		JLabel progressLabel = new JLabel("loading...");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane
 				.createParallelGroup(Alignment.LEADING)

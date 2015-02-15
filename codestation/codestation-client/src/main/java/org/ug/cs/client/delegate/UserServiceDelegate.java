@@ -17,6 +17,7 @@ public class UserServiceDelegate {
 	public static void load() {
 		proxy = (UserServiceRemote) ServiceLocator.getInstance().getProxy(EAR,
 				EJB_MODULE, SERVICE_NAME, UserServiceRemote.class);
+		System.out.println("US");
 	}
 
 	public static Boolean isLoginInUse(String login) {
