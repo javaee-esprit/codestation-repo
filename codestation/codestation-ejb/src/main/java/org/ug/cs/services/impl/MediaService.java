@@ -18,14 +18,15 @@ import org.ug.cs.services.interfaces.MediaServiceRemote;
 @Stateless
 @Remote(MediaServiceRemote.class)
 @Local(MediaServiceLocal.class)
-public class MediaService extends AbstractManagementService<Media, Integer> implements MediaServiceRemote, MediaServiceLocal {
+public class MediaService extends AbstractManagementService<Media, Integer>
+		implements MediaServiceRemote, MediaServiceLocal {
 
 	@PersistenceContext
 	private EntityManager em;
-	
-    public MediaService() {
-    	super(Media.class);
-    }
+
+	public MediaService() {
+		super(Media.class);
+	}
 
 	public EntityManager getEntityManager() {
 		return em;
@@ -35,12 +36,12 @@ public class MediaService extends AbstractManagementService<Media, Integer> impl
 	public List<Media> findAll() {
 		return super.findAll();
 	}
-	
+
 	@TransactionAttribute(TransactionAttributeType.NEVER)
 	public Media findById(Integer id) {
 		return super.findById(id);
 	}
-	
+
 	@TransactionAttribute(TransactionAttributeType.NEVER)
 	public Long count() {
 		return super.count();

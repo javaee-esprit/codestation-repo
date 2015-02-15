@@ -11,12 +11,11 @@ public class UserServiceDelegate {
 	private static final String EAR = "codestation-ear";
 	private static final String EJB_MODULE = "codestation-ejb";
 	private static final String SERVICE_NAME = "UserService";
-	
+
 	private static UserServiceRemote proxy = null;
 
-	
 	public static void load() {
-		proxy =(UserServiceRemote) ServiceLocator.getInstance().getProxy(EAR,
+		proxy = (UserServiceRemote) ServiceLocator.getInstance().getProxy(EAR,
 				EJB_MODULE, SERVICE_NAME, UserServiceRemote.class);
 	}
 

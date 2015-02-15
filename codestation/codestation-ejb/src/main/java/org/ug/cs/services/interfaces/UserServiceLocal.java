@@ -11,7 +11,7 @@ public interface UserServiceLocal {
 	User create(User user);
 
 	List<User> findAllUsers();
-	
+
 	User authenticate(String login, String password);
 
 }

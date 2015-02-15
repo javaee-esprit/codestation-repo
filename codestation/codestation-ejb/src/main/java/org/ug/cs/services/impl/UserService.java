@@ -23,7 +23,7 @@ import org.ug.cs.services.interfaces.UserServiceRemote;
 @Remote(UserServiceRemote.class)
 @Local(UserServiceLocal.class)
 public class UserService implements UserServiceRemote, UserServiceLocal {
-	
+
 	@Inject
 	private Logger logger;
 
@@ -60,10 +60,11 @@ public class UserService implements UserServiceRemote, UserServiceLocal {
 		TypedQuery<User> query = em.createQuery(jpql, User.class);
 		query.setParameter("x", login);
 		query.setParameter("y", password);
-		try{
+		try {
 			found = query.getSingleResult();
-		}catch(NoResultException e){
-			logger.log(Level.WARNING, "Authentication failure (login='"+login+"', password='"+password+"')");
+		} catch (NoResultException e) {
+			logger.log(Level.WARNING, "Authentication failure (login='" + login
+					+ "', password='" + password + "')");
 		}
 		return found;
 	}

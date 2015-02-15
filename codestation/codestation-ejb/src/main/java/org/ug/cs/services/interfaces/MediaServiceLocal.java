@@ -18,7 +18,4 @@ public interface MediaServiceLocal {
 
 	void remove(Media media);
 
-
-
-
 }

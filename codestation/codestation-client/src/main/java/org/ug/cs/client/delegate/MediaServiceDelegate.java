@@ -5,7 +5,6 @@ import java.util.List;
 import org.ug.cs.client.locator.ServiceLocator;
 import org.ug.cs.persistence.Media;
 import org.ug.cs.services.interfaces.MediaServiceRemote;
-import org.ug.cs.services.interfaces.UserServiceRemote;
 
 public class MediaServiceDelegate {
 

@@ -45,7 +45,5 @@ public class Media implements Serializable {
 	public String toString() {
 		return "Media [id=" + id + ", title=" + title + "]";
 	}
-	
-	
 
 }

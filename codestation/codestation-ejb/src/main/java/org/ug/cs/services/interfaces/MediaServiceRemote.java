@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.ug.cs.persistence.Media;
 
-
 public interface MediaServiceRemote {
-	
+
 	void create(Media media);
 
 	Media findById(Integer id);
@@ -18,6 +17,5 @@ public interface MediaServiceRemote {
 	void update(Media media);
 
 	void remove(Media media);
-	
 
 }
