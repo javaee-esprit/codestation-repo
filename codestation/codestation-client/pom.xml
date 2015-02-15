@@ -26,6 +26,12 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>${version.hibernate}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${version.google.guava}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
