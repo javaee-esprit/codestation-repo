@@ -2,12 +2,14 @@ package org.ug.cs.client.ui;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
+
 import java.awt.Color;
 
 public class LoadingProxiesPane extends JPanel {
@@ -30,6 +32,7 @@ public class LoadingProxiesPane extends JPanel {
 		progressLabel = new JLabel();
 
 		JLabel imageLabel = new JLabel();
+		imageLabel.setIcon(new ImageIcon("loading.gif"));;
 		imageLabel.setBackground(Color.DARK_GRAY);
 		
 		GroupLayout gl_contentPane = new GroupLayout(this);
