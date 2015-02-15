@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -18,16 +17,16 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-import org.ug.cs.client.delegate.MediaServiceDelegate;
 import org.ug.cs.client.delegate.UserServiceDelegate;
 import org.ug.cs.client.util.Session;
 import org.ug.cs.persistence.User;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
-public class AuthenticationUI extends JFrame {
+public class AuthenticationPane extends JPanel {
 
 	private static final long serialVersionUID = -4810801674114292800L;
 
-	private JPanel contentPane;
 	private JTextField loginField;
 	private JPasswordField passwordField;
 
@@ -38,7 +37,7 @@ public class AuthenticationUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AuthenticationUI frame = new AuthenticationUI();
+					AuthenticationPane frame = new AuthenticationPane();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,28 +49,24 @@ public class AuthenticationUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AuthenticationUI() {
-		setTitle("CODESTATION");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 338, 164);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+	public AuthenticationPane() {
+		setSize(300,120);
+		this.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "Authentication",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(
+		GroupLayout gl_this = new GroupLayout(this);
+		gl_this.setHorizontalGroup(gl_this.createParallelGroup(
 				Alignment.LEADING).addComponent(panel,
 				GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(
-				Alignment.LEADING).addGroup(
-				gl_contentPane
-						.createSequentialGroup()
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 115,
-								GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(115, Short.MAX_VALUE)));
+		gl_this.setVerticalGroup(gl_this.createParallelGroup(Alignment.LEADING)
+				.addGroup(
+						gl_this.createSequentialGroup()
+								.addComponent(panel,
+										GroupLayout.PREFERRED_SIZE, 115,
+										GroupLayout.PREFERRED_SIZE)
+								.addContainerGap(115, Short.MAX_VALUE)));
 
 		JLabel lblLogin = new JLabel("login");
 
@@ -106,7 +101,6 @@ public class AuthenticationUI extends JFrame {
 							}
 						}
 					});
-					dispose();
 				}
 			}
 		});
@@ -185,6 +179,6 @@ public class AuthenticationUI extends JFrame {
 								.addContainerGap(GroupLayout.DEFAULT_SIZE,
 										Short.MAX_VALUE)));
 		panel.setLayout(gl_panel);
-		contentPane.setLayout(gl_contentPane);
+		this.setLayout(gl_this);
 	}
 }
