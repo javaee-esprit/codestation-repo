@@ -18,6 +18,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import org.ug.cs.client.delegate.MediaServiceDelegate;
 import org.ug.cs.client.delegate.UserServiceDelegate;
 import org.ug.cs.client.util.Session;
 import org.ug.cs.persistence.User;
@@ -35,6 +36,7 @@ public class AuthenticationUI extends JFrame {
 	 */
 	public static void main(String[] args) {
 		UserServiceDelegate.load();
+		MediaServiceDelegate.load();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

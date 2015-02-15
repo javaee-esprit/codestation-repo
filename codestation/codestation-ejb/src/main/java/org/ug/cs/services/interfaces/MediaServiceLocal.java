@@ -8,12 +8,17 @@ public interface MediaServiceLocal {
 
 	void create(Media media);
 
-	void update(Media media);
-
 	Media findById(Integer id);
 
 	List<Media> findAll();
 
 	Long count();
+
+	void update(Media media);
+
+	void remove(Media media);
+
+
+
 
 }
